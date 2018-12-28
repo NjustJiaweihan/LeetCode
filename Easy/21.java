@@ -32,3 +32,35 @@ class Solution
         return Head.next;
     }
 }
+
+//21 递归思路
+
+class Solution
+{
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2)
+    {
+        ListNode Head;
+
+        //递归返回条件写在前头
+        if(l1 == null)
+        {
+            return l2;
+        }
+        if(l2 == null)
+        {
+            return l1;
+        }
+
+        if(l1.val <= l2.val)
+        {
+            Head = l1;
+            Head.next = mergeTwoLists(l1.next,l2);
+        }
+        else
+        {
+            Head = l2;
+            Head.next = mergeTwoLists(l1,l2.next);
+        }
+        return Head;
+    }
+}
