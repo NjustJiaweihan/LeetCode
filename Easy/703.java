@@ -1,25 +1,16 @@
 class KthLargest
 {
     private int k;
-    private PriorityQueue<Integer> pq;
+    private Queue<Integer> pq;
     public KthLargest(int k, int[] nums)
     {
         this.k = k;
         pq = new PriorityQueue<>(k);
         for(int elem : nums)
         {
-            if(pq.size() < k)
-            {
-                pq.add(elem);
-            }
-            else
-            {
-                if(pq.peek() < elem)
-                {
-                    pq.poll();
-                    pq.add(elem);
-                }
-            }
+            //这个add是KthLargest类的add方法 它有size的判断
+            this.add(elem);
+            //pq.add(elem) 调用的是PriorityQueue的add方法 它没有size判断
         }
     }
 
