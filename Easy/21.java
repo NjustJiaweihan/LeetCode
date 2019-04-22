@@ -64,3 +64,53 @@ class Solution
         return Head;
     }
 }
+
+//2ms
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2)
+    {
+        if(l1 == null && l2 == null)
+        {
+            return null;
+        }
+        ListNode first = new ListNode(0);
+        ListNode last = first;
+
+        while (l1 != null || l2 != null)
+        {
+            if(l1 == null)
+            {
+                ListNode oldlast = last;
+                last = l2;
+                oldlast.next = last;
+
+                l2 = l2.next;
+            }
+            else if(l2 == null)
+            {
+                ListNode oldlast = last;
+                last = l1;
+                oldlast.next = last;
+
+                l1 = l1.next;
+            }
+            else if(l1.val > l2.val)
+            {
+                ListNode oldlast = last;
+                last = l2;
+                oldlast.next = last;
+
+                l2 = l2.next;
+            }
+            else
+            {
+                ListNode oldlast = last;
+                last = l1;
+                oldlast.next = last;
+
+                l1 = l1.next;
+            }
+        }
+        return first.next;
+    }
+}
