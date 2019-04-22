@@ -53,6 +53,9 @@ class Solution
         }
 
         int lo = 0, hi = lists.length-1;
+        //lo < hi 而不是 lo <= hi
+        //以及mid = (hi + lo - 1) / 2 而不是mid = (hi + lo) / 2 
+        //都避免了自己与自己归并 [0 mid]是i的活动范围 对于奇偶list长度都成立
         while (lo < hi)
         {
             int mid = (hi + lo - 1) / 2;
